@@ -16,18 +16,33 @@ public class NoteController {
     private final NoteRepository noteRepository;
     private final NoteService noteService;
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public Flux<Note> getNotesByUserId(@PathVariable Integer userId) {
         return noteRepository.findByUserId(userId);
     }
 
-    @GetMapping("/{sourceId}")
+    @GetMapping("/source/{sourceId}")
     public Flux<Note> getNotesBySourceId(@PathVariable Integer sourceId) {
         return noteRepository.findBySourceId(sourceId);
+    }
+
+    @GetMapping()
+    public Flux<Note> getAllTheNotes(){
+        return noteRepository.findAll();
+    }
+
+    @GetMapping("/{noteId}")
+    public Mono<Note> getNoteById(@PathVariable Integer noteId){
+        return noteRepository.findById(noteId);
     }
 
     @PostMapping
     public Mono<Note> addNote(@RequestBody Note note){
         return noteService.createNote(note);
+    }
+
+    @DeleteMapping("/{noteId}")
+    public Mono<Void> deleteNote(@PathVariable Integer noteId){
+        return noteRepository.deleteById(noteId);
     }
 }
