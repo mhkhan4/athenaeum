@@ -1,12 +1,13 @@
 package gmpu.athenaeum.repository;
-import gmpu.athenaeum.model.Note;
+
+import gmpu.athenaeum.model.Category;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
-import java.util.UUID;
-
 @Repository
-public interface NoteRepository extends ReactiveCrudRepository<Note, Integer> {
-}
+public interface CategoryRepository extends ReactiveCrudRepository<Category, Integer> {
 
+    Flux<Category> findBySubjectId(Integer subjectId);
+
+}

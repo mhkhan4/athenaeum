@@ -1,19 +1,20 @@
 package gmpu.athenaeum.model;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+
+
+/*
+Example: You can store elements in an array
+ */
 
 @Data
-@Table("note")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Note {
     @Id
-    private Integer noteId;
-    private String topic;
-    private String category;
-    private String noteInDetails;
-    @NonNull
+    private Integer id;
+    private String content;
     private Integer sourceId;
-    @NonNull
     private Integer userId;
 }

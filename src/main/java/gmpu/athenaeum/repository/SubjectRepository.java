@@ -1,10 +1,8 @@
 package gmpu.athenaeum.repository;
 
-import gmpu.athenaeum.model.User;
+import gmpu.athenaeum.model.Subject;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 
-
-
 @Repository
-public interface UserRepository extends ReactiveCrudRepository<User, Integer> {}
+public interface SubjectRepository extends ReactiveCrudRepository<Subject, Integer> {}
